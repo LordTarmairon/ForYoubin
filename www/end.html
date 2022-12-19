@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title> Happy Birthday Emma </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="icon" type="image/vnd.microsoft.icon" href="../fotos/favicon.png">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+  <style>
+    .div-img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .div-img .img {
+      display: block;
+      width: 215px;
+      height: 200px;
+      border-radius: 150px;
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 150px;
+      transform: translate(0px);
+      -ms-transform: translate(0px);
+      -moz-transform: translate(0px);
+      -webkit-transform: translate(0px);
+      -o-transform: translate(0px);
+      -webkit-transition: all 500ms ease-in-out;
+      -moz-transition: all 500ms ease-in-out;
+      -ms-transition: all 500ms ease-in-out;
+      -o-transition: all 500ms ease-in-out;
+    }
+    .img {
+        margin: auto;
+    }
+    .div-img .text {
+        font: oblique bold 105% cursive;
+    }
+    .div-img p {
+        width: 184px;
+        margin: auto;
+        margin-top: -165px;
+        color: white;
+    }
+    .img:hover {
+      transform: translate(-300px, 0px);
+      -ms-transform: translate(-300px, 0px);
+      -moz-transform: translate(-300px, 0px);
+      -webkit-transform: translate(-300px, 0px);
+      -o-transform: translate(-300px, 0px);
+    }
+
+      html,
+      body {
+          height: 100%;
+          /* for touch screen */
+          touch-action: none;
+      }
+
+      body {
+          overflow: hidden;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          flex-direction: column;
+          background: rgb(0, 0, 0);
+          -webkit-perspective: 1000px;
+          perspective: 1000px;
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+      }
+      #drag-container{
+          margin-bottom: 388px !important;
+      }
+      #drag-container,
+      #spin-container {
+          position: relative;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          margin: auto;
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+          -webkit-transform: rotateX(-10deg);
+          transform: rotateX(-10deg);
+      }
+       #drag-container img,
+      #drag-container video {
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          line-height: 200px;
+          font-size: 50px;
+          text-align: center;
+          -webkit-box-shadow: 0 0 8px #fff;
+          box-shadow: 0 0 8px #fff;
+          -webkit-box-reflect: below 10px
+          linear-gradient(transparent, transparent, #0005);
+      }
+
+      #drag-container img:hover,
+      #drag-container video:hover {
+          -webkit-box-shadow: 0 0 15px #fffd;
+          box-shadow: 0 0 15px #fffd;
+          -webkit-box-reflect: below 10px
+          linear-gradient(transparent, transparent, #0007);
+      }
+
+      #drag-container p {
+          font-family: Serif;
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+          transform: translate(-50%, -50%) rotateX(90deg);
+          color: #fff;
+      }
+
+      #ground {
+          width: 900px;
+          height: 900px;
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+          transform: translate(-50%, -50%) rotateX(90deg);
+          background: -webkit-radial-gradient(
+                  center center,
+                  farthest-side,
+                  #9993,
+                  transparent
+          );
+      }
+
+      @-webkit-keyframes spin {
+          from {
+              -webkit-transform: rotateY(0deg);
+              transform: rotateY(0deg);
+          }
+          to {
+              -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+          }
+      }
+
+      @keyframes spin {
+          from {
+              -webkit-transform: rotateY(0deg);
+              transform: rotateY(0deg);
+          }
+          to {
+              -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+          }
+      }
+      @-webkit-keyframes spinRevert {
+          from {
+              -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+          }
+          to {
+              -webkit-transform: rotateY(0deg);
+              transform: rotateY(0deg);
+          }
+      }
+      @keyframes spinRevert {
+          from {
+              -webkit-transform: rotateY(360deg);
+              transform: rotateY(360deg);
+          }
+          to {
+              -webkit-transform: rotateY(0deg);
+              transform: rotateY(0deg);
+          }
+      }
+
+  </style>
+</head>
+<body>
+    <div class="row mt-4">
+        <div class="div-img" >
+            <img class="img" src="..\fotos\animado.gif" alt="Foto5">
+            <div class="text text-center">
+                <p>
+                    I love you Emma. You are the girl of my life. Happy Birthday I was never so happy 🥰:)
+                </p>
+            </div>
+        </div>
+    </div>
+
+  <!-- CAROUSEL -->
+        <div id="drag-container">
+            <div id="spin-container">
+                <!-- Add your images (or video) here -->
+                <img class="openIn" src="../fotos/foto7.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto4.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto11.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto19.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto22.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto23.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto24.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto8.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto10.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto13.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto9.png" alt="Photo">
+
+                <img class="openIn" src="../fotos/foto16.jpg" alt="Photo">
+
+                <!-- Example image with link -->
+
+                <!-- Example add video  -->
+                <video controls>
+                    <source src="../fotos/video1.mp4" type="video/mp4">
+                </video>
+                <!-- Text at center of ground -->
+                <p>Happy Birthday Emma</p>
+            </div>
+            <div id="ground"></div>
+        </div>
+      <!-- END CAROUSEL -->
+    </div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" type="application/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLWL5N9CSM"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LLWL5N9CSM');
+  </script>
+  <script>
+      var radius = 240;
+      var autoRotate = true;
+      var rotateSpeed = -60;
+      var imgWidth = 120;
+      var imgHeight = 170;
+      setTimeout(init, 1000);
+      var odrag = document.getElementById('drag-container');
+      var ospin = document.getElementById('spin-container');
+      var aImg = ospin.getElementsByTagName('img');
+      var aVid = ospin.getElementsByTagName('video');
+      var aEle = [...aImg, ...aVid];
+
+      $(".openIn").on("click", function(ev){
+          window.open(ev.target.src, '_blank');
+      })
+      // Size of images
+      ospin.style.width = imgWidth + "px";
+      ospin.style.height = imgHeight + "px";
+
+      // Size of ground - depend on radius
+      var ground = document.getElementById('ground');
+      ground.style.width = radius * 3 + "px";
+      ground.style.height = radius * 3 + "px";
+
+      function init(delayTime) {
+          for (var i = 0; i < aEle.length; i++) {
+              aEle[i].style.transform = "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
+              aEle[i].style.transition = "transform 1s";
+              aEle[i].style.transitionDelay = delayTime || (aEle.length - i) / 4 + "s";
+          }
+      }
+
+      function applyTranform(obj) {
+          // Constrain the angle of camera (between 0 and 180)
+          if(tY > 180) tY = 180;
+          if(tY < 0) tY = 0;
+
+          // Apply the angle
+          obj.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
+      }
+
+      function playSpin(yes) {
+          ospin.style.animationPlayState = (yes?'running':'paused');
+      }
+
+      var sX, sY, nX, nY, desX = 0,
+          desY = 0,
+          tX = 0,
+          tY = 10;
+
+      // auto spin
+      if (autoRotate) {
+          var animationName = (rotateSpeed > 0 ? 'spin' : 'spinRevert');
+          ospin.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`;
+      }
+
+
+      // setup events
+      document.onpointerdown = function (e) {
+          clearInterval(odrag.timer);
+          e = e || window.event;
+          var sX = e.clientX,
+              sY = e.clientY;
+
+          this.onpointermove = function (e) {
+              e = e || window.event;
+              var nX = e.clientX,
+                  nY = e.clientY;
+              desX = nX - sX;
+              desY = nY - sY;
+              tX += desX * 0.1;
+              tY += desY * 0.1;
+              applyTranform(odrag);
+              sX = nX;
+              sY = nY;
+          };
+
+          this.onpointerup = function (e) {
+              odrag.timer = setInterval(function () {
+                  desX *= 0.95;
+                  desY *= 0.95;
+                  tX += desX * 0.1;
+                  tY += desY * 0.1;
+                  applyTranform(odrag);
+                  playSpin(false);
+                  if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+                      clearInterval(odrag.timer);
+                      playSpin(true);
+                  }
+              }, 17);
+              this.onpointermove = this.onpointerup = null;
+          };
+
+          return false;
+      };
+
+      document.onmousewheel = function(e) {
+          e = e || window.event;
+          var d = e.wheelDelta / 20 || -e.detail;
+          radius += d;
+          init(1);
+      };
+
+  </script>
+</body>
+</html>
+
