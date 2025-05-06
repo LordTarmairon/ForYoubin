@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title> Happy Birthday Emma </title>
+<title> Happy Birthday Youbin </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="icon" type="image/vnd.microsoft.icon" href="../fotos/favicon.png">
@@ -39,7 +39,7 @@
     }
     .div-img .text {
         font: oblique bold 105% cursive;
-    }
+    } 
     .div-img p {
         width: 184px;
         margin: auto;
@@ -187,10 +187,10 @@
 <body>
     <div class="row mt-4">
         <div class="div-img" >
-            <img class="img" src="..\fotos\animado.gif" alt="Foto5">
+            <img class="img" id="secretHeart" src="..\fotos\animado.gif" alt="Foto5">
             <div class="text text-center">
                 <p>
-                    I love you Emma. You are the girl of my life. Happy Birthday I was never so happy 🥰:)
+                    I love you Youbin. You are the girl of my life. Happy Birthday I´ve never been so happy 🥰:)
                 </p>
             </div>
         </div>
@@ -211,6 +211,12 @@
                 <img class="openIn" src="../fotos/foto10.jpg" alt="Photo">
                 <img class="openIn" src="../fotos/foto13.jpg" alt="Photo">
                 <img class="openIn" src="../fotos/foto9.png" alt="Photo">
+                <img class="openIn" src="../fotos/foto9.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto2.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto5.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto12.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto15.jpg" alt="Photo">
+                <img class="openIn" src="../fotos/foto21.jpg" alt="Photo">
 
                 <img class="openIn" src="../fotos/foto16.jpg" alt="Photo">
 
@@ -221,7 +227,7 @@
                     <source src="../fotos/video1.mp4" type="video/mp4">
                 </video>
                 <!-- Text at center of ground -->
-                <p>Happy Birthday Emma</p>
+                <p id="centerText">Happy Birthday Youbin</p>
             </div>
             <div id="ground"></div>
         </div>
@@ -235,13 +241,69 @@
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLWL5N9CSM"></script>
   <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LLWL5N9CSM');
+    let timer;
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LLWL5N9CSM');
+
+    $("#secretHeart").mouseenter(function() {
+        timer = setTimeout(function() {
+            setCheckStorage(1);
+        }, 1000); // Espera 0.5 segundos (500 ms) antes de marcar el checkbox
+    });
+
+    $("#miElemento").mouseleave(function() {
+        clearTimeout(timer); // Cancela el temporizador si el mouse sale antes de 0.5 segundos
+    });
+
+    function checkIfTiltedEnough() {
+        const transform = document.querySelector("#drag-container").style.transform;
+        const match = transform.match(/rotateX\((-?\d+(\.\d+)?)deg\)/);
+
+        if (match) {
+            const rotateXValue = parseFloat(match[1]);
+            if (rotateXValue <= -26) {
+                setCheckStorage(2)
+            }
+        }
+    }
+   
+    function setCheckStorage(value){
+        if (localStorage.getItem("youbinGift") !== null) {
+            if (isNaN(localStorage.getItem("youbinGift"))) return;
+            let number = parseInt(localStorage.getItem("youbinGift"));
+
+            if ((number & value) == value) {
+                return;
+            } else {
+                let newValue = number | value;
+
+                localStorage.setItem("youbinGift", newValue); 
+                console.log(`Nuevo valor guardado: ${newValue}`);
+            }
+        }  else {
+            localStorage.setItem("youbinGift", value);
+        }
+        checkCheckboxes();
+    }
+
+    function checkCheckboxes(valor) {
+        $("#firstCheckbox").prop("checked", (valor & 1) !== 0); // Bit 1
+        $("#secondCheckbox").prop("checked", (valor & 2) !== 0); // Bit 2
+        $("#thirdCheckbox").prop("checked", (valor & 4) !== 0); // Bit 4
+
+        $("#firstCheckbox").next("label").css("text-decoration", ($("#firstCheckbox").is(":checked")) ? "line-through" : "none")
+        $("#secondCheckbox").next("label").css("text-decoration", ($("#secondCheckbox").is(":checked")) ? "line-through" : "none")
+        $("#thirdCheckbox").next("label").css("text-decoration", ($("#thirdCheckbox").is(":checked")) ? "line-through" : "none")
+    }
+
+        // END CHEECK THE LOCALSTORAGE
+
   </script>
   <script>
-      var radius = 240;
+      var radius = 360;
       var autoRotate = true;
       var rotateSpeed = -60;
       var imgWidth = 120;
@@ -280,6 +342,7 @@
 
           // Apply the angle
           obj.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
+          checkIfTiltedEnough();
       }
 
       function playSpin(yes) {

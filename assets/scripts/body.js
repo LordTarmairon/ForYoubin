@@ -31,14 +31,18 @@ $( document ).ready(function() {
     }
 
     // DNOTOPEN
-    const validName = ['jose', 'jose luis'];
-    const validNameHer = ['emma', 'sejin', 'se jin', 'se jin jeong'];
+    const validName = ['jose', 'jose luis', 'josito', 'jose luis calleja garcia', 'jose luis calleja'];
+    const validNameHer = ['youbin', 'yubin', 'youbeen', 'yi youbeen', 'yi youbin', 'yubi', 'yubinita'];
     var hisName = "";
     var herName = "";
 
     //BODY.html SCRIPTS
     $("#btn-start").on("click", function(){
         nameRequest();
+        document.documentElement.requestFullscreen().catch(err => {
+            console.log("Error al entrar en pantalla completa:", err);
+        });
+
     })
 
 
@@ -130,6 +134,8 @@ $( document ).ready(function() {
                                     return false;
                                 } else {
                                     hisName = name;
+                                    hisName = hisName.charAt(0).toUpperCase() + hisName.slice(1);
+
                                     nameRequest(true);
                                     return true;
                                 }
@@ -159,6 +165,7 @@ $( document ).ready(function() {
                                     return false;
                                 } else {
                                     herName = name;
+                                    herName = herName.charAt(0).toUpperCase() + herName.slice(1);
                                     showMessages();
                                     return true;
                                 }
@@ -185,14 +192,14 @@ $( document ).ready(function() {
 
         switch (time) {
             case 1:
-                title = "Getting Information";
-                message = "After analyzing a basic part of the both, I have detected quite valuable information. Keep this in mind because it is important 😉";
+                title = "Getting Information...";
+                message = "After analyzing a basic part of the both, I have detected quite valuable information. <span class='magicW'>K</span><sup>1</sup>eep this in mind because it is important 😉";
                 subMessage = "Measuring emotion levels:";
                 percent = 5;
                 break;
             case 2:
-                title = "I know more thant you think";
-                message = "Did you know that I have the knowledge of fate? I am able to <span class='magicW'>s</span>ee what you feel in the deepest of your heart ❤";
+                title = "I know more thant you think " +herName;
+                message = "Did you know that I have the knowledge of fate? I am able to see what you feel in the deepest of your heart ❤";
                 subMessage = "Feelings that your heart screams. Emotion Levels:";
                 percent = 10;
                 img ="../fotos/scared.png";
@@ -200,8 +207,8 @@ $( document ).ready(function() {
                 break;
             case 3:
                 title = "Letting you know";
-                message = "As an IA who has analyzed your heart and that of the person in your heart, I can confirm you "+herName+",That I know your name is "+herName+" 🤭, that to "+hisName+" you are the most important person in the world.";
-                subMessage = "His heart screams your name only beats for you 😍. Emotion levels:";
+                message = "As a Sorcerer of Fate who has analyzed your heart and the person who is deep inside in your heart, I can confirm you, "+herName+", oh yes, I know your name is "+herName+" 🤭, that to "+hisName+" you are the most important person in the world.";
+                subMessage = "His heart screams you<span class='magicW'>R</span><sup>2</sup> name, it only beats for you 😍. Emotion levels:";
                 percent = 25;
                 img ="../fotos/cuteface.png";
 
@@ -214,64 +221,92 @@ $( document ).ready(function() {
                 break;
             case 5:
                 title = hisName +" is so in love of you";
-                message = "He loves you very very much 🥰. There is nothing in the world that he loves so much, and nothing can take away that feeling he feels for you 😍";
+                message = "He loves you very very much 🥰. There is nothing <span class='magicW'>I</span><sup>3</sup>n the world that he loves so much, and nothing can take away that feeling he feels for you 😍";
                 subMessage = "The power of that feeling is really awesome. Emotion Levels:";
                 percent = 40;
                 break;
             case 6:
-                title = "Together You Will Be Able With Everything";
+                title = "Together, You Will Be Able With Everything";
                 message = "Sometimes the situation can be complicated or the distance can be difficult 😔. But...";
-                subMessage = "Other bett<span class='magicW'>e</span>r things are more important than this... Emotion Levels:";
+                subMessage = "Other better things are more important than this... Emotion Levels:";
                 percent = 50;
                 break;
             case 7:
-                title = "Important Information";
-                message = "If there is something that is clear, it is that there is nothing than he wants more than to share his life with you, by your side 🤗";
-                subMessage = "Exciting, his heart is yours ❤, don't let go. Emotion Levels:";
-                percent = 65;
+                title = hisName+"'s Inspiration Moment 🥰";
+                message = "In the quiet garden of "+hisName+"'s heart, your name blooms like the first rose of spring, "+ herName;
+                subMessage = "The stars may light the sky, but it is your smile that illuminates "+hisName+"'s soul in Seoul 🫣... Emotion Levels:";
+                percent = 55;
+                img ="../fotos/funyJose.png";
                 break;
             case 8:
+                title = "Important Information";
+                message = "If there is something clear, it is that there i<span class='magicW'>S</span><sup>4</sup> nothing than he wants more than to share his life with you, by your side 🤗";
+                subMessage = "Exciting, his heart is yours ❤, don't let his go. Emotion Levels:";
+                percent = 65;
+                break;
+            case 9:
                 title = "Really Important Words";
-                message = "Because there is nothing more beautiful than being with the person you love and helping them to make all their wishes come true, every day you spend with them you fill them with <span class='magicW'>j</span>oy, and illuminate their face with a beautiful smile 🥰";
-                subMessage = "Tell him you love him, don't hold it back. Emotion Levels:";
+                message = "There is nothing more beautiful than being with the one you love, sharing their dreams, and helping them come true. Each day by that person's side fills their heart with joy and lights their face with the most radiant smile. 🥰";
+                subMessage = "<span class='magicW'>T</span><sup>5</sup>ell him you love him, don't hold it back. Emotion Levels:";
                 percent = 70;
                 img ="../fotos/looking.png";
 
                 break;
-            case 9:
+            case 10:
                 title = "Near Future";
                 message = "The day will come when all your dreams will come true, your wishes will be fulfilled. And he will be with you so that all of these are possible 😃";
                 subMessage = "That sounds incredible, but you are his destiny. Emotion Levels:";
                 percent = 75;
                 break;
-            case 10:
-                title = herName + " <span class='magicW'>I</span>s Amazing";
-                message = "As far as I can see, inside your heart there is a great person, someone like that deserves the best, you also deserve to be loved, taken care of and pampered 🤗";
-                subMessage = "Your emotion levels oscillates by the:";
-                percent = 85;
-                break;
             case 11:
-                title = "Being An AI I Think I Like You Too";
-                message = "Today is a special day. A day not to be forgotten. "+hisName+" would love to be with you at this very moment, he wants to live with you many great moments 😌.";
-                subMessage = "It sounds interesting, but why is today a special day? 🤔 Emotion Levels:";
-                percent = 90;
+                title = "To love is power and power is love";
+                message = "Perhaps the one who loves you is a little strange at times, but who else but love itself dares to break the rules just to make you laugh? 🙃";
+                subMessage = "Love may come dressed in oddity, but only the heart that dares to be different can scatter your laughter like stars across the night 😜. Emotion Levels:";
+                percent = 80;
+                img ="../fotos/suriJose.png";
+
                 break;
             case 12:
-                title = "There Is More Than You Think";
-                message = "Today is one more day in which you are closer to achieving your goals, one day closer to your happiness, a day that you will remember over time when your wishes have been fulfilled and you see that what seemed distant is your present 😃";
-                subMessage = "Listen to it, it knows what it's talking about. Emotion Levels:";
+                title = herName + " It is Amazing";
+                message = "As far as <span class='magicW'>I</span><sup>6</sup> can see, inside your heart there is a great person, someone like that deserves the best, you also deserve to be loved, taken care of and pampered 🤗";
+                subMessage = "Your emotion levels oscillates by the:";
+                percent = 85;
+                img ="../fotos/coreanme.png";
+
+                break;
+            case 13:
+                title = "Being A Sorcerer of Fate, I Think, I Like You Too";
+                message = "Today is a special day, one that won't be forgotten. "+hisName+" wishes he could be with you right now, sharing countless beautiful moments together. 😌";
+                subMessage = "It sounds interesting, but why is today a special day? 🤔 Emotion Levels:";
+                percent = 87;
+                break;
+            case 14:
+                title = "Shadows with love cover the Halloween night";
+                message = "Wrapped in the oddest Halloween disguise, "+hisName+"'s crossed the night just to reach your light because even shadows know where true love hides. 😈.";
+                subMessage = "His heart would still find yours because love sees through masks no matter how weird they seem. 👻 Emotion Levels:";
                 percent = 90;
+                img ="../fotos/crepy.png";
+                break;
+            case 15:
+                title = "There Is More Than You Think";
+                message = "Today is another day that brings you closer to your goals, one step nearer to your happiness. It's a day you’ll look back on, when your dreams have come true and what once felt distant is now your reality. 😃";
+                subMessage = "Liste<span class='magicW'>N</span><sup>7</sup> to it, it knows what it's talking about. Emotion Levels:";
+                percent = 95;
+                img ="../fotos/pensative.png";
+
                 break;
 
-            case 13:
-                title = "Happy Birthday";
-                message = "But for <span class='magicW'>n</span>ow we wish you Happy Birthday 🥳. Our best wishes 🥰. And do not forget everything that fate has told you 🤫";
+            case 16:
+                title = "Today is a Special day";
+                message = "But for now, we wish you a Happy Birthday 🥳, with all our best wishes 🥰. And don’t forget everything fate has whispered to you 🤫";
                 subMessage = "Your emotion levels oscillates by the 😳:";
                 percent = 99.9;
                 break;
             default:
                 title = "Happy Birthday";
                 message = "I love you "+herName+"! 🤗";
+                img ="../fotos/together.png";
+
         }
 
         iziToast.info({
@@ -300,7 +335,7 @@ $( document ).ready(function() {
                     instance.hide({
                         transitionOut: transitions("out"),
                         onClosing: function (instance, toast, closedBy) {
-                            if(time <= 13){
+                            if(time <= 16){
                                 showMessage(subMessage, percent)
                                 showMessages(time+1);
                                 return false;
@@ -313,7 +348,7 @@ $( document ).ready(function() {
                 }, true], // true to focus
             ],
             onClosing: function (instance, toast, closedBy) {
-                if(time <= 13){
+                if(time <= 16){
                     showMessage(subMessage, percent)
                     showMessages(time+1);
                     return false;
